@@ -7,10 +7,11 @@ import {
   Send,
   Twitter,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import cn from "../lib/utils";
 
 const ContactSection = () => {
+    
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -131,7 +132,7 @@ const ContactSection = () => {
                 />
               </div>
               <button type="submit" className={cn("cosmic-button w-full flex items-center justify-center gap-2")}>
-                Send Message
+                 Send Message
                 <Send size={16}/>
               </button>
             </form>

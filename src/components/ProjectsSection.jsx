@@ -1,15 +1,17 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import React from "react";
 
+
+
 const projects = [
   {
     id: 1,
-    title: "SaaS Landing Page",
+    title: "Spotify Clone Application",
     description: "A beautiful landing page app using React and Tailwind.",
-    image: "/projects/project1.png",
-    tags: ["React", "TailwindCSS", "Supabase"],
-    demoUrl: "#",
-    githubUrl: "#",
+    image:"/projects/spotify landing page.png" ,
+    tags: ["React", "TailwindCSS"],
+    demoUrl: "https://nithinspotifyclone.netlify.app",
+    githubUrl: "https://github.com/nithintechie123/Spotify-Clone",
   },
   {
     id: 2,
