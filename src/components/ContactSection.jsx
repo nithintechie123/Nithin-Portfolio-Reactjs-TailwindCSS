@@ -1,4 +1,7 @@
 import {
+  GitBranch,
+  GitCompareIcon,
+  GithubIcon,
   Instagram,
   Linkedin,
   Mail,
@@ -33,10 +36,10 @@ const ContactSection = () => {
                 <div>
                   <h4 className="font-medium">Email</h4>
                   <a
-                    href="mailto:hello@gmail.com"
+                    href="mailto:gorintalanithin@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    hello@gmail.com
+                    gorintalanithin@gmail.com
                   </a>
                 </div>
               </div>
@@ -50,7 +53,7 @@ const ContactSection = () => {
                     href="tel:+91-8956234563"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +91-8956234563
+                    +91-8790474590
                   </a>
                 </div>
               </div>
@@ -69,13 +72,13 @@ const ContactSection = () => {
             <div className="pt-8">
               <h4 className="font-medium mb-4">Connect With Me</h4>
               <div className="flex space-x-4 justify-center">
-                <a href="#" target="_blank">
+                <a href="https://www.linkedin.com/in/nithin-gorintala" target="_blank">
                   <Linkedin />
                 </a>
-                <a href="#" target="_blank">
-                  <Twitter />
+                <a href="https://github.com/nithintechie123" target="_blank">
+                  <GithubIcon/>
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://www.instagram.com/nithin______8790?igsh=MWIwYnF6ZnlreXZ6bQ==" target="_blank">
                   <Instagram />
                 </a>
               </div>

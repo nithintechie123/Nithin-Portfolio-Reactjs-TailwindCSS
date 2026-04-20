@@ -34,7 +34,7 @@ const AboutSection = () => {
                 Get in Touch
               </a>
               <a
-                href=""
+                href="https://drive.google.com/file/d/1ugsj9PgA7p3F5mB2MEqie2AXC2WSSIfK/view?usp=sharing"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV
@@ -52,34 +52,6 @@ const AboutSection = () => {
                   <p className="text-muted-foreground">
                     Creating responsive websites and web applications with
                     modern framworks
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <User className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-semibold text-lg">UI/UX Design</h4>
-                  <p className="text-muted-foreground">
-                    Design intuitive user interfaces and seamless user
-                    experiences.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Briefcase className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-semibold text-lg">Project Management</h4>
-                  <p className="text-muted-foreground">
-                    Leading projects from conception to completion with agile
-                    methodologies.
                   </p>
                 </div>
               </div>
