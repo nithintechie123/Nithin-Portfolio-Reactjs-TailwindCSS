@@ -17,7 +17,7 @@ const projects = [
     id: 2,
     title: "AI Recipe Generator",
     description:
-      "Interactive analytics dashboard with data visualization and filtering capabilities.",
+      "AI Recipe Generator is a full-stack web application built on the MERN stack (MongoDB, Express, React, Node.js). A user uploads a photo of food or ingredients, and the app detects what’s in the photo, lets the user adjust the ingredient list, optionally filter by dietary preference, and then generates a complete, structured recipe via AI.",
     image: "/projects/Ai-Recipe-Thumbnail.png",
     tags: ["MongoDB", "Node js", "React js", "GROK SDK"],
     demoUrl: "https://ai-recipe-generator-eta.vercel.app/",
