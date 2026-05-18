@@ -8,7 +8,7 @@ const projects = [
     id: 1,
     title: "Spotify Clone Application",
     description: "A beautiful landing page app using React and Tailwind.",
-    image:"/projects/spotify landing page.png" ,
+    image: "/projects/spotify landing page.png",
     tags: ["React", "TailwindCSS"],
     demoUrl: "https://nithinspotifyclone.netlify.app",
     githubUrl: "https://github.com/nithintechie123/Spotify-Clone",
@@ -19,7 +19,7 @@ const projects = [
     description:
       "Interactive analytics dashboard with data visualization and filtering capabilities.",
     image: "/projects/Ai-Recipe-Thumbnail.png",
-    tags: ["MongoDB", "Node js", "React js"],
+    tags: ["MongoDB", "Node js", "React js", "GROK SDK"],
     demoUrl: "https://ai-recipe-generator-eta.vercel.app/",
     githubUrl: "https://github.com/nithintechie123/ai-recipe-generator",
   },
