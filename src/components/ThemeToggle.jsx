@@ -3,43 +3,46 @@ import React, { useEffect, useState } from "react";
 import cn from "../lib/utils";
 
 const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode ] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
-  useEffect(()=>{
-    const storedTheme=localStorage.getItem("theme");
-    if(storedTheme=="dark"){
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme == "dark") {
       setIsDarkMode(true);
       document.documentElement.classList.add("dark");
-    }else{
-      localStorage.setItem("theme","light");
+    } else {
+      localStorage.setItem("theme", "light");
       setIsDarkMode(false);
     }
 
-  },[])
+  }, [])
 
-  const toggleTheme=()=>{
-    if(isDarkMode){
+  const toggleTheme = () => {
+    if (isDarkMode) {
       document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme","light");
+      localStorage.setItem("theme", "light");
       setIsDarkMode(false);
-    }else{
+    } else {
       document.documentElement.classList.add("dark");
-      localStorage.setItem("theme","dark");
+      localStorage.setItem("theme", "dark");
       setIsDarkMode(true);
     }
   }
 
   return (
-    <button onClick={toggleTheme} className={
-      cn("fixed max-sm:hidden top-5 right-5 z-50 p-1 rounded-full transition-colors duration-300",
-        "focus:outlin-hidden"
-      )
-    }>
-      {" "}
+    <button
+      onClick={toggleTheme}
+      className={cn(
+        "fixed top-5 right-18 sm:top-3 sm:right-4 z-50 p-2 rounded-full transition-all duration-300",
+        "bg-card/90 backdrop-blur-md border border-primary/20",
+        "shadow-md shadow-primary/5 hover:scale-110 active:scale-95 hover:shadow-lg focus:outline-none cursor-pointer"
+      )}
+      aria-label="Toggle theme"
+    >
       {isDarkMode ? (
-        <Sun className="h-6 w-6 text-yellow-300" />
+        <Sun className="h-5 w-5 sm:h-6 sm:w-6 text-amber-400 animate-pulse-subtle" />
       ) : (
-        <Moon className="h-6 w-6 text-blue-900" />
+        <Moon className="h-5 w-5 sm:h-6 sm:w-6 text-violet-600 dark:text-violet-400" />
       )}
     </button>
   );

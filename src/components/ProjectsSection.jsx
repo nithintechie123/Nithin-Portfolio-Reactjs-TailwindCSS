@@ -13,16 +13,16 @@ const projects = [
     demoUrl: "https://nithinspotifyclone.netlify.app",
     githubUrl: "https://github.com/nithintechie123/Spotify-Clone",
   },
-  // {
-  //   id: 2,
-  //   title: "Orbit Analytics Dashboard",
-  //   description:
-  //     "Interactive analytics dashboard with data visualization and filtering capabilities.",
-  //   image: "/projects/project2.png",
-  //   tags: ["TypeScript", "D3.js", "Next.js"],
-  //   demoUrl: "#",
-  //   githubUrl: "#",
-  // },
+  {
+    id: 2,
+    title: "AI Recipe Generator",
+    description:
+      "Interactive analytics dashboard with data visualization and filtering capabilities.",
+    image: "/projects/Ai-Recipe-Thumbnail.png",
+    tags: ["MongoDB", "Node js", "React js"],
+    demoUrl: "https://ai-recipe-generator-eta.vercel.app/",
+    githubUrl: "https://github.com/nithintechie123/ai-recipe-generator",
+  },
   // {
   //   id: 3,
   //   title: "E-commerce Platform",
