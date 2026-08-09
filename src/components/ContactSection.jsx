@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 import cn from "../lib/utils";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -38,18 +39,60 @@ const ContactSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Construct the direct prefilled mailto URL
-    const subject = `Message from ${formData.name}`;
-    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
-    const mailtoUrl = `mailto:gorintalanithin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    // Instantly launch the user's local email application
-    window.location.href = mailtoUrl;
+    const hasCredentials =
+      serviceId &&
+      serviceId !== "your_service_id" &&
+      templateId &&
+      templateId !== "your_template_id" &&
+      publicKey &&
+      publicKey !== "your_public_key";
 
-    // Show the gorgeous Cosmic success thank-you overlay!
-    setStatus({ submitting: false, success: true, error: null });
-    // Reset form fields
-    setFormData({ name: "", email: "", message: "" });
+    if (hasCredentials) {
+      setStatus({ submitting: true, success: false, error: null });
+
+      emailjs
+        .send(
+          serviceId,
+          templateId,
+          {
+            from_name: formData.name,
+            reply_to: formData.email,
+            message: formData.message,
+          },
+          publicKey
+        )
+        .then(() => {
+          setStatus({ submitting: false, success: true, error: null });
+          setFormData({ name: "", email: "", message: "" });
+        })
+        .catch((err) => {
+          console.error("EmailJS sending failed:", err);
+          // Auto fallback to local mailto
+          const subject = `Message from ${formData.name}`;
+          const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+          const mailtoUrl = `mailto:gorintalanithin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoUrl;
+
+          setStatus({ submitting: false, success: true, error: null });
+          setFormData({ name: "", email: "", message: "" });
+        });
+    } else {
+      // Simulate API network latency for a premium experience
+      setStatus({ submitting: true, success: false, error: null });
+      setTimeout(() => {
+        const subject = `Message from ${formData.name}`;
+        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+        const mailtoUrl = `mailto:gorintalanithin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoUrl;
+
+        setStatus({ submitting: false, success: true, error: null });
+        setFormData({ name: "", email: "", message: "" });
+      }, 1200);
+    }
   };
 
   const resetForm = () => {
@@ -207,12 +250,22 @@ const ContactSection = () => {
                   </div>
                   <button 
                     type="submit" 
+                    disabled={status.submitting}
                     className={cn(
-                      "cosmic-button w-full flex items-center justify-center gap-2 cursor-pointer"
+                      "cosmic-button w-full flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                     )}
                   >
-                    Send Message
-                    <Send size={16} />
+                    {status.submitting ? (
+                      <>
+                        <Loader2 className="animate-spin" size={16} />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send size={16} />
+                      </>
+                    )}
                   </button>
                 </form>
               </>
