@@ -11,7 +11,7 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           {/* Left Column: Text Summary */}
           <div className="md:col-span-7 text-left space-y-6 order-2 md:order-1">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+            <h1 className="text-3xl md:text-5xl font-display uppercase tracking-wider leading-tight">
               <span className="opacity-0 animate-fade-in block sm:inline">Hi, I'm</span>
               <span className="text-primary opacity-0 animate-fade-in-delay-1 block sm:inline">
                 {" "}
@@ -25,7 +25,7 @@ const HeroSection = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl opacity-0 animate-fade-in-delay-3 leading-relaxed">
               I am an aspiring Full Stack Developer with a strong foundation in
               Computer Science and hands-on experience in building responsive web
-              applications using React.js, Node.js, Express.js, and SQLite. I
+              applications using React.js, Node.js, Express.js, and MySQL. I
               enjoy solving problems, learning new technologies, and developing
               scalable, user-friendly solutions.
             </p>
@@ -35,7 +35,7 @@ const HeroSection = () => {
               </a>
               <a
                 href="#contact"
-                className="px-6 py-2 rounded-full border border-border hover:border-primary/50 text-foreground transition-all duration-300 hover:scale-105 active:scale-95"
+                className="px-6 py-2.5 rounded-full border border-border hover:border-primary/50 text-foreground transition-all duration-300 hover:scale-105 active:scale-95 font-display uppercase tracking-widest text-xs"
               >
                 Contact Me
               </a>

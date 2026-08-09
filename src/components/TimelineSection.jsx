@@ -7,26 +7,37 @@ const FadeInSection = ({ children, delay = 0 }) => {
   const domRef = useRef();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.05 } // Trigger when 5% of the element is visible
-    );
+    let observer;
+    const currentElement = domRef.current;
 
-    const currentRef = domRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    // Delay observer creation to let layout settle
+    const timer = setTimeout(() => {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVisible(true);
+              if (observer && currentElement) {
+                observer.unobserve(currentElement);
+              }
+            }
+          });
+        },
+        { 
+          threshold: 0.1,
+          rootMargin: "0px 0px -60px 0px" // Trigger transition when element is scrolled 60px into view
+        }
+      );
+
+      if (currentElement) {
+        observer.observe(currentElement);
+      }
+    }, 150);
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
+      clearTimeout(timer);
+      if (observer && currentElement) {
+        observer.unobserve(currentElement);
       }
     };
   }, []);
@@ -34,8 +45,9 @@ const FadeInSection = ({ children, delay = 0 }) => {
   return (
     <div
       ref={domRef}
-      className={`transition-all duration-800 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"
-        }`}
+      className={`transition-all duration-1000 ease-out transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12 pointer-events-none"
+      }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -125,7 +137,7 @@ const TimelineTrack = ({ data }) => {
                   </div>
 
                   {/* Duration Badge */}
-                  <div className="flex items-center gap-2 self-start sm:self-center text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-full shrink-0">
+                  <div className="flex items-center gap-2 self-start sm:self-center text-xs font-mono font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-full shrink-0">
                     <Calendar size={12} className="text-primary/80" />
                     <span>{item.duration}</span>
                     {isCurrent && (
@@ -157,7 +169,7 @@ const TimelineSection = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto max-w-4xl relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+        <h2 className="text-2xl md:text-3xl font-display uppercase tracking-widest mb-4 text-center">
           My <span className="text-primary">Journey</span>
           <span className="text-foreground"> & Background</span>
         </h2>
@@ -172,7 +184,7 @@ const TimelineSection = () => {
               <div className="p-2 bg-primary/10 text-primary border border-primary/20 rounded-xl">
                 <Briefcase size={20} />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Experience & Internships</h3>
+              <h3 className="text-lg font-display uppercase tracking-wider text-foreground">Experience & Internships</h3>
             </div>
           </FadeInSection>
           <TimelineTrack data={experienceData} />
@@ -185,7 +197,7 @@ const TimelineSection = () => {
               <div className="p-2 bg-primary/10 text-primary border border-primary/20 rounded-xl">
                 <GraduationCap size={20} />
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Education</h3>
+              <h3 className="text-lg font-display uppercase tracking-wider text-foreground">Education</h3>
             </div>
           </FadeInSection>
           <TimelineTrack data={educationData} />

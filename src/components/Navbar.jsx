@@ -31,7 +31,7 @@ const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between">
-        <a className="text-xl font-bold text-primary flex items-center">
+        <a className="text-lg font-display uppercase tracking-widest text-primary flex items-center cursor-pointer">
           <span className="relative z-10">
             <span className="text-glow text-foreground">Nithin </span>
             Portfolio
@@ -44,7 +44,7 @@ const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                className="text-xs font-display uppercase tracking-widest text-foreground/85 hover:text-primary transition-colors duration-300"
               >
                 {item.name}
               </a>
@@ -52,7 +52,7 @@ const Navbar = () => {
           </div>
           <ThemeToggle />
         </div>
-
+ 
         {/* Mobile nav controls */}
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
@@ -77,7 +77,7 @@ const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                className="text-base font-display uppercase tracking-widest text-foreground/80 hover:text-primary transition-colors duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

@@ -62,8 +62,11 @@ const ContactSection = () => {
             from_name: formData.name,
             reply_to: formData.email,
             message: formData.message,
+            to_email: "gorintalanithin@gmail.com",
           },
-          publicKey
+          {
+            publicKey: publicKey,
+          }
         )
         .then(() => {
           setStatus({ submitting: false, success: true, error: null });
@@ -71,14 +74,12 @@ const ContactSection = () => {
         })
         .catch((err) => {
           console.error("EmailJS sending failed:", err);
-          // Auto fallback to local mailto
-          const subject = `Message from ${formData.name}`;
-          const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
-          const mailtoUrl = `mailto:gorintalanithin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          window.location.href = mailtoUrl;
-
-          setStatus({ submitting: false, success: true, error: null });
-          setFormData({ name: "", email: "", message: "" });
+          const errorMsg = err?.text || err?.message || JSON.stringify(err) || "Failed to send message.";
+          setStatus({ 
+            submitting: false, 
+            success: false, 
+            error: `${errorMsg}. Please verify your service/template IDs and public key in your EmailJS dashboard.`
+          });
         });
     } else {
       // Simulate API network latency for a premium experience
@@ -100,9 +101,9 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
+    <section id="contact" className="py-24 px-4 relative bg-card/25 border-t border-border/10">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+        <h2 className="text-2xl md:text-3xl font-display uppercase tracking-widest mb-4 text-center">
           Get In <span className="text-primary">Touch</span>
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -248,6 +249,12 @@ const ContactSection = () => {
                       placeholder="Hello, I'd like to talk about..."
                     />
                   </div>
+                  {status.error && (
+                    <div className="p-4 text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-md text-left leading-relaxed">
+                      <strong>Submission Error:</strong> {status.error}
+                    </div>
+                  )}
+
                   <button 
                     type="submit" 
                     disabled={status.submitting}
