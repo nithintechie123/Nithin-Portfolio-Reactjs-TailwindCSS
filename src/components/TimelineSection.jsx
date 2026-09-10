@@ -82,7 +82,7 @@ const experienceData = [
     duration: "June 2026 - August 2026",
     description: (
       <>
-        Currently pursuing an <strong>Infosys Springboard internship</strong>, developing <strong>ShopStack, a multi-vendor e-commerce marketplace</strong> using Spring Boot, React.js, PostgreSQL, Spring Security, JWT, and Razorpay, with role-based dashboards, secure authentication, payment integration, inventory management, order fulfillment, returns, and analytics.
+        Completed an <strong>Infosys Springboard internship</strong>, developing <strong>ShopStack, a multi-vendor e-commerce marketplace</strong> using React.js, Node.js, Express.js, MySQL, JWT authentication, and Razorpay, with role-based dashboards, secure checkout, inventory management, order fulfillment, returns, and analytics.
       </>
     ),
     icon: Briefcase,
@@ -104,7 +104,7 @@ const experienceData = [
 // Reusable Timeline Track Component
 const TimelineTrack = ({ data }) => {
   return (
-    <div className="relative ml-6 md:ml-24 space-y-10">
+    <div className="relative ml-4 sm:ml-10 md:ml-20 space-y-8 sm:space-y-10">
       {/* Vertical line with gradient fade */}
       <div className="absolute left-0 top-3 bottom-3 w-[2px] bg-gradient-to-b from-primary/80 via-primary/40 to-border/20" />
 
@@ -114,30 +114,30 @@ const TimelineTrack = ({ data }) => {
 
         return (
           <FadeInSection key={item.id} delay={index * 100}>
-            <div className="relative pl-8 md:pl-14 group text-left">
+            <div className="relative pl-6 sm:pl-10 md:pl-14 group text-left">
               {/* Node icon with pulsing outer ring on hover */}
-              <span className="absolute -left-4 md:-left-[22px] top-1.5 flex h-8 w-8 md:h-11 md:w-11 items-center justify-center rounded-full bg-card border-2 border-primary/40 text-primary shadow-md shadow-primary/5 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-300 z-10">
-                <Icon size={16} className="md:w-5 md:h-5" />
+              <span className="absolute -left-3.5 sm:-left-5 md:-left-[22px] top-1.5 flex h-7 w-7 sm:h-9 sm:w-9 md:h-11 md:w-11 items-center justify-center rounded-full bg-card border-2 border-primary/40 text-primary shadow-md shadow-primary/5 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-300 z-10">
+                <Icon size={14} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
               </span>
 
               {/* Main Card Content */}
-              <div className="relative overflow-hidden p-6 md:p-8 bg-card/45 hover:bg-card/75 backdrop-blur-md rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-primary/5 group/card">
+              <div className="relative overflow-hidden p-4 sm:p-6 md:p-8 bg-card/65 hover:bg-card/85 backdrop-blur-md rounded-2xl border border-border/60 hover:border-primary/40 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 group/card">
                 {/* Subtle top accent gradient */}
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-all duration-500" />
 
                 {/* Card Header: Title + Duration */}
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2.5 sm:gap-3 mb-3 sm:mb-4">
                   <div className="space-y-1">
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 font-display">
                       {item.role}
                     </h3>
-                    <h4 className="text-sm font-semibold text-foreground/80">
+                    <h4 className="text-xs sm:text-sm font-semibold text-foreground/80 font-mono">
                       {item.institution}
                     </h4>
                   </div>
 
                   {/* Duration Badge */}
-                  <div className="flex items-center gap-2 self-start sm:self-center text-xs font-mono font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-full shrink-0">
+                  <div className="flex items-center gap-1.5 self-start sm:self-center text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full shrink-0">
                     <Calendar size={12} className="text-primary/80" />
                     <span>{item.duration}</span>
                     {isCurrent && (
@@ -150,7 +150,7 @@ const TimelineTrack = ({ data }) => {
                 </div>
 
                 {/* Card Body */}
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -164,27 +164,33 @@ const TimelineTrack = ({ data }) => {
 
 const TimelineSection = () => {
   return (
-    <section id="timeline" className="py-24 px-4 relative">
+    <section id="timeline" className="py-20 sm:py-24 px-3 sm:px-4 relative">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto max-w-4xl relative z-10">
-        <h2 className="text-2xl md:text-3xl font-display uppercase tracking-widest mb-4 text-center">
-          My <span className="text-primary">Journey</span>
-          <span className="text-foreground"> & Background</span>
-        </h2>
-        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-          A detailed look at my academic foundation, internships, and self-directed development experience.
-        </p>
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-primary text-xs font-mono font-bold uppercase tracking-wider mb-3">
+            <Briefcase size={13} /> Engineering Journey
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display uppercase tracking-widest text-foreground font-bold">
+            Experience & <span className="text-primary">Academic Track</span>
+          </h2>
+          <p className="mt-3 text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+            A comprehensive look at my software engineering internships, academic foundation, and project sprints.
+          </p>
+        </div>
 
         {/* Experience Section */}
-        <div className="mb-20">
+        <div className="mb-16 sm:mb-20">
           <FadeInSection>
-            <div className="flex items-center gap-3 mb-8 ml-6 md:ml-24">
+            <div className="flex items-center gap-3 mb-6 ml-4 sm:ml-10 md:ml-20">
               <div className="p-2 bg-primary/10 text-primary border border-primary/20 rounded-xl">
-                <Briefcase size={20} />
+                <Briefcase size={18} />
               </div>
-              <h3 className="text-lg font-display uppercase tracking-wider text-foreground">Experience & Internships</h3>
+              <h3 className="text-base sm:text-lg font-display uppercase tracking-wider text-foreground font-bold">
+                Experience & Internships
+              </h3>
             </div>
           </FadeInSection>
           <TimelineTrack data={experienceData} />
@@ -193,11 +199,13 @@ const TimelineSection = () => {
         {/* Education Section */}
         <div>
           <FadeInSection>
-            <div className="flex items-center gap-3 mb-8 ml-6 md:ml-24">
+            <div className="flex items-center gap-3 mb-6 ml-4 sm:ml-10 md:ml-20">
               <div className="p-2 bg-primary/10 text-primary border border-primary/20 rounded-xl">
-                <GraduationCap size={20} />
+                <GraduationCap size={18} />
               </div>
-              <h3 className="text-lg font-display uppercase tracking-wider text-foreground">Education</h3>
+              <h3 className="text-base sm:text-lg font-display uppercase tracking-wider text-foreground font-bold">
+                Academic Foundation
+              </h3>
             </div>
           </FadeInSection>
           <TimelineTrack data={educationData} />
